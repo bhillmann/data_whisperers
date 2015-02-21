@@ -172,6 +172,7 @@
                 scope: $scope,
                 title: 'Select Song',
                 templateUrl: 'popup-song.html',
+                okText: 'Okay',
                 okType: 'button-royal'
             }).then(function(resp) {
                 if (resp) {
