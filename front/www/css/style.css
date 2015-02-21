@@ -1,1 +1,8 @@
 /* Empty. Add your own CSS if you like */
+h1 {
+    font-size: x-large;
+}
+
+.item-avatar > img:first-child {
+    border-radius: 0;
+}
