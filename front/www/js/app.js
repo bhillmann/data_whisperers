@@ -32,5 +32,36 @@
 
   });
 
+  app.controller('CreateController', function($scope, $ionicPopover) {
+    $scope.event = {
+      filter: 'None'
+    };
+
+    $scope.filters = ["None", "Pop", "Rap", "EDM"];
+
+    $ionicPopover.fromTemplateUrl('filter-popover.html', {
+      scope: $scope
+    }).then(function(popover) {
+      $scope.filterPopover = popover;
+    });
+
+    $scope.openFilterPopover = function($event) {
+      $scope.filterPopover.show($event);
+    };
+
+    $scope.closeFilterPopover = function() {
+      $scope.filterPopover.hide();
+    };
+
+    $scope.$on('$destroy', function() {
+      $scope.filterPopover.remove();
+    });
+
+    $scope.publish = function() {
+
+    };
+
+  });
+
 })();
 
