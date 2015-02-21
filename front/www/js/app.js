@@ -111,6 +111,14 @@
 
     });
 
+    app.controller('HomeController', function($scope, $http) {
+        $scope.eventCount = 0;
+        $http.get(url + 'getEvents').success(function(data) {
+            $scope.eventCount = data.events.length;
+        });
+
+    });
+
     app.controller('HostController', function($scope, $http) {
         $scope.event = myEvent;
 
@@ -171,7 +179,7 @@
 
     app.controller('BrowseController', function($scope, $state, $http){
         $http.get(url + 'getEvents').success(function(data) {
-            $scope.eventsData = data;
+            $scope.events = data.events;
         });
 
         $scope.goEvent = function(event) {
