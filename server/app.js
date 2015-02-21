@@ -83,7 +83,6 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     ee.once('success', function(data) {
     	var processedPulledSongs = _.map(data.toptracks.track, lastfm.processData);
     	for(var i =0;i<processedPulledSongs.length;i++){
-    		delete processedPulledSongs.dateLiked;
     		processedPulledSongs[i].isCurrentSong=false;
     		processedPulledSongs[i].isNextSong=false;
     	}
