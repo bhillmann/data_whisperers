@@ -21,9 +21,9 @@
           url: '/',
           templateUrl: 'home.html'
         })
-        .state('music', {
-          url: '/music',
-          templateUrl: 'music.html'
+        .state('create', {
+          url: '/create',
+          templateUrl: 'create.html'
         });
     $urlRouterProvider.when('', '/#');
   });
