@@ -116,7 +116,7 @@
 
     });
 
-    app.controller('DjController', function($scope, $ionicPopup) {
+    app.controller('DjController', function($scope, $ionicPopup, $http) {
         $scope.event = myEvent;
         $scope.event.userCount = 0;
         $scope.nowPlaying = {};

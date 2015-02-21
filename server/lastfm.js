@@ -5,11 +5,7 @@
 var LastFmNode = require('lastfm').LastFmNode;
 var _ = require('underscore');
 var fs = require('fs');
-// So dumb
-var ewait = require("ewait");
-var all = new ewait.WaitForAll({
-    event: 'success'    // Wait for a custom event.
-});
+
 var config = require('./config');
 
 var lastfm = new LastFmNode({
