@@ -36,16 +36,16 @@ var userLikes ={"userLikes":[
 ]}
 
 var songs ={"songs":[
-	{"songName":"Dark Horse", "artist":"Katy Perry", "isCurrentSong":false, "isNextSong":true},
-	{"songName":"Don't Trip", "artist":"Vitamin P","isCurrentSong":false,"isNextSong":false},
-	{"songName":"Blank Space", "artist":"Taylor Swift","isCurrentSong":true,"isNextSong":false},
-	{"songName":"SexyBack", "artist":"Justin Timberlake","isCurrentSong":false,"isNextSong":false},
-	{"songName":"Can I Kick it?", "artist":"A Tribe Called Quest","isCurrentSong":false,"isNextSong":false},
-	{"songName":"Mom's Spaghetti", "artist":"Eminem","isCurrentSong":false,"isNextSong":false},
-	{"songName":"Rocket Man", "artist":"Elton John","isCurrentSong":false,"isNextSong":false},
-	{"songName":"Forever Young", "artist":"Jay Z","isCurrentSong":false,"isNextSong":false},
-	{"songName":"Scooby and the Gang", "artist":"Those Meddling Kids","isCurrentSong":false,"isNextSong":false},
-	{"songName":"Thundercats", "artist":"Lavender Gooms","isCurrentSong":false,"isNextSong":false},
+	{"title":"Dark Horse", "artist":"Katy Perry", "isCurrentSong":false, "isNextSong":true},
+	{"title":"Don't Trip", "artist":"Vitamin P","isCurrentSong":false,"isNextSong":false},
+	{"title":"Blank Space", "artist":"Taylor Swift","isCurrentSong":true,"isNextSong":false},
+	{"title":"SexyBack", "artist":"Justin Timberlake","isCurrentSong":false,"isNextSong":false},
+	{"title":"Can I Kick it?", "artist":"A Tribe Called Quest","isCurrentSong":false,"isNextSong":false},
+	{"title":"Mom's Spaghetti", "artist":"Eminem","isCurrentSong":false,"isNextSong":false},
+	{"title":"Rocket Man", "artist":"Elton John","isCurrentSong":false,"isNextSong":false},
+	{"title":"Forever Young", "artist":"Jay Z","isCurrentSong":false,"isNextSong":false},
+	{"title":"Scooby and the Gang", "artist":"Those Meddling Kids","isCurrentSong":false,"isNextSong":false},
+	{"title":"Thundercats", "artist":"Lavender Gooms","isCurrentSong":false,"isNextSong":false},
 
 ]}
 
@@ -139,13 +139,13 @@ function getCurrEventAndCurrSongAndNextSong(){
 		var current = songs.songs[j];
 		if(current.isCurrentSong){
 			currSong={
-				title: current.songName,
+				title: current.title,
 				artist: current.artist
 			};
 		}
 		if(current.isNextSong){
 			nextSong={
-				title: current.songName,
+				title: current.title,
 				artist: current.artist
 			};
 		}
