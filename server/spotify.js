@@ -8,4 +8,9 @@ var config = require('./config');
 
 spotifyApi.setAccessToken(config.spotify);
 
-api.get()
+spotifyApi.getUserPlaylists('michaelabramson')
+    .then(function(data) {
+        console.log('Retrieved playlists', data);
+    },function(err) {
+        console.log('Something went wrong!', err);
+    });

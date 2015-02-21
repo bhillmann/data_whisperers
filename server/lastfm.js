@@ -11,18 +11,11 @@ var lastfm = new LastFmNode({
     secret: 'secret'
 });
 
-var test = lastfm.request('user.getTopTracks', {
-    user: 'bhillmann',
-    handlers: {
-        success: function(data) {
-            var processed = _.map(data.toptracks.track, processData);
-            console.log(processed);
-        },
-        error: function(error) {
-            console.log("Error: " + error.message);
-        }
-    }
-});
+function getProcessed() {
+    return lastfm.request('user.getTopTracks', {
+            user: 'bhillmann'
+    });
+}
 
 function processData(value, key) {
     var processed = {};
@@ -30,4 +23,8 @@ function processData(value, key) {
     processed.artist = value.artist.name;
     processed.dateLiked = "Feb. 21 2015";
     return processed;
-};
+}
+
+//getProcessed().once('success', function(data) {
+//    return data;
+//});
