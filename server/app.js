@@ -10,6 +10,9 @@
 //   });
 // });
 
+//CREATING FAKE DATA
+
+
 var express = require('express')
 var app = express()
 var path = require('path');
@@ -20,12 +23,11 @@ app.use(logger('dev'));
 // Tell Express that we also want to parse json bodies from put or post requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(express.static(path.join(__dirname, 'public')));  //automatically create route for everything in public
+app.use(express.static(path.join(__dirname, '../front/www')));  //automatically create route for everything in public
 
+//this is the request that starts the app I think
 app.get('/', function (req, res, next) {
-	//res.sendFile(path.join(__dirname, '../Macman/public', 'index.html'))
 	res.sendFile(path.join(__dirname, '../front/www', 'index.html'))
-	//res.send("hello bro");
 })
 
 
