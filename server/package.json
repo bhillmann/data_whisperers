@@ -18,9 +18,7 @@
     ""
   ],
   "dependencies": {
-    "meow": "^2.0.0"
-  },
-  "devDependencies": {
+    "meow": "^2.0.0”,
     "grunt-cli": "^0.1.13",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.4.1",
@@ -29,7 +27,13 @@
     "time-grunt": "^1.0.0",
     "grunt-mocha-cli": "^1.11.0",
     "jshint-stylish": "^1.0.0",
-    "browserify": "^7.0.0"
+    "browserify": "^7.0.0”,
+    "body-parser": "^1.10.0",
+    "express": "^4.10.4",
+    "jade": "^1.7.0",
+    "mongoskin": "^1.4.4",
+    "morgan": "^1.5.0",
+    "socket.io": "^1.2.0"
   },
   "scripts": {
     "test": "grunt",
