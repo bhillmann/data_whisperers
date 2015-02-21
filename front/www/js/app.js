@@ -1,6 +1,6 @@
 (function(){
 
-    var url = "http://ec2-52-10-25-198.us-west-2.compute.amazonaws.com:8080/";
+    var url = "http://localhost:8080/";
     //ec2-52-10-25-198.us-west-2.compute.amazonaws.com
 
     var app = angular.module('whisperers', ['ionic']);
@@ -174,7 +174,7 @@
                 templateUrl: 'popup-song.html'
             }).then(function(resp) {
                 if (resp) {
-                    // confirm
+                    $scope.upNext = $scope.selectSong;
                 } else {
                     // nothing really
                 }
