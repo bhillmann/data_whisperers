@@ -5,9 +5,10 @@ h1 {
 
 .item-avatar > img:first-child {
     border-radius: 0;
+    /* because fuck this shit */
 }
 
-.text-centered{
+.text-centered {
     text-align: center;
 }
 
