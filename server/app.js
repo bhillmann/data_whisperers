@@ -36,16 +36,16 @@ var userLikes ={"userLikes":[
 ]}
 
 var songs ={"songs":[
-	{"title":"Dark Horse", "artist":"Katy Perry", "isCurrentSong":false, "isNextSong":true},
-	{"title":"Don't Trip", "artist":"Vitamin P","isCurrentSong":false,"isNextSong":false},
-	{"title":"Blank Space", "artist":"Taylor Swift","isCurrentSong":true,"isNextSong":false},
-	{"title":"SexyBack", "artist":"Justin Timberlake","isCurrentSong":false,"isNextSong":false},
-	{"title":"Can I Kick it?", "artist":"A Tribe Called Quest","isCurrentSong":false,"isNextSong":false},
-	{"title":"Mom's Spaghetti", "artist":"Eminem","isCurrentSong":false,"isNextSong":false},
-	{"title":"Rocket Man", "artist":"Elton John","isCurrentSong":false,"isNextSong":false},
-	{"title":"Forever Young", "artist":"Jay Z","isCurrentSong":false,"isNextSong":false},
-	{"title":"Scooby and the Gang", "artist":"Those Meddling Kids","isCurrentSong":false,"isNextSong":false},
-	{"title":"Thundercats", "artist":"Lavender Gooms","isCurrentSong":false,"isNextSong":false},
+	{"title":"Dark Horse", "artist":"Katy Perry", "isCurrentSong":false, "isNextSong":true, "imageURL":"img/DarkHorseCover.png"},
+	{"title":"Don't Trip", "artist":"Vitamin P","isCurrentSong":false,"isNextSong":false, "imageURL":"img/vitaminP.jpg"},
+	{"title":"Blank Space", "artist":"Taylor Swift","isCurrentSong":true,"isNextSong":false, "imageURL":"img/Blank_Space.png"},
+	{"title":"SexyBack", "artist":"Justin Timberlake","isCurrentSong":false,"isNextSong":false, "imageURL":"img/SexyBack.jpg"},
+	{"title":"Can I Kick it?", "artist":"A Tribe Called Quest","isCurrentSong":false,"isNextSong":false, "imageURL":"img/tribe.jpg"},
+	{"title":"Mom's Spaghetti", "artist":"Eminem","isCurrentSong":false,"isNextSong":false, "imageURL":"img/spaghetti.jpg"},
+	{"title":"Rocket Man", "artist":"Elton John","isCurrentSong":false,"isNextSong":false, "imageURL":"img/rocketManElton.jpg"},
+	{"title":"Forever Young", "artist":"Jay Z","isCurrentSong":false,"isNextSong":false, "imageURL":"img/jayz_cover_young.jpg"},
+	{"title":"Scooby and the Gang", "artist":"Those Meddling Kids","isCurrentSong":false,"isNextSong":false, "imageURL":"img/scooby.jpg"},
+	{"title":"Thundercats", "artist":"Lavender Gooms","isCurrentSong":false,"isNextSong":false, "imageURL":"img/thundercats.jpg"},
 
 ]}
 
@@ -78,6 +78,39 @@ app.get('/getUserLikes', function (req, res, next){
 	res.send(userLikes);
 })
 
+// app.get('/getPoolOfSongs', function(req, res, next) {
+//     var ee = lastfm.getProcessed();
+//     ee.once('success', function(data) {
+//     	var processedPulledSongs = _.map(data.toptracks.track, lastfm.processData);
+//     	var currentSongsLength = songs.songs.length;
+//     	for(var i =0;i<processedPulledSongs.length;i++){
+//     		processedPulledSongs[i].isCurrentSong=false;
+//     		processedPulledSongs[i].isNextSong=false;
+//     		songs.songs.push(processedPulledSongs[i]);
+//     		//songs.songs[i+currentSongsLength] = processedPulledSongs[i];
+//     	}
+//     	//now songs is updated.  Randomly select 10 of them
+//     	//create array same size as songs with integers in ascending order
+//     	var ints = [];
+//     	for(var j=0;j<20;j++){
+//     		ints[j]=j;
+//     	}
+//     	var shuffledInts = shuffle(ints);
+//     	var pickedSongs=[];
+//     	for(var k=0;k<10;k++){
+//     		pickedSongs[k]=songs.songs[shuffledInts[k]];
+//     	}
+//     	res.send(pickedSongs);
+//     	// //res.send(processedPulledSongs);
+
+//     	//res.send(shuffledInts);
+
+//     });
+//     ee.once('error', function(data) {
+//         console.log(data);
+//     });
+// })
+
 app.get('/getPoolOfSongs', function(req, res, next) {
     var ee = lastfm.getProcessed();
     ee.once('success', function(data) {
@@ -86,8 +119,47 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     	for(var i =0;i<processedPulledSongs.length;i++){
     		processedPulledSongs[i].isCurrentSong=false;
     		processedPulledSongs[i].isNextSong=false;
+    		//Staring at the Sun by The Offspring
+    		if(i==0){
+    			processedPulledSongs[i].imageURL = "img/original_pranksters.jpg";
+    		}
+    		//Introduction to destruction by sum41
+    		else if(i==1){
+    			processedPulledSongs[i].imageURL = "img/intro_to_destruction.jpg";
+    		}
+    		//Sugar by Maroon 5
+    		else if(i==2){
+    			processedPulledSongs[i].imageURL = "img/Maroon-5-Sugar.jpg";
+    		}
+    		//Superwoman by Alicia Keys
+    		else if(i==3){
+    			processedPulledSongs[i].imageURL = "img/as_i_am.jpg";
+    		}
+    		//Go Ahead by Alicia Keys
+    		else if(i==4){
+    			processedPulledSongs[i].imageURL = "img/as_i_am.jpg";
+    		}
+    		//As I am (Intro ) by Alicia Keys
+    		else if(i==5){
+    			processedPulledSongs[i].imageURL = "img/as_i_am.jpg";
+    		}
+    		//energy by drake
+    		else if(i==6){
+    			processedPulledSongs[i].imageURL = "img/energy_drake.jpg";
+    		}
+    		//thinking out loud by Ed Sheeran
+    		else if(i==7){
+    			processedPulledSongs[i].imageURL = "img/ed-sheeran-thinking-out-loud-thumb.jpg";
+    		}
+    		//uptown Funk by Mark Ronson
+    		else if(i==8){
+    			processedPulledSongs[i].imageURL = "img/ronson_uptown.jpg";
+    		}
+    		//earned it "the weeknd"
+    		else if(i==9){
+    			processedPulledSongs[i].imageURL = "img/weeknd_earned_it.jpg";
+    		}
     		songs.songs.push(processedPulledSongs[i]);
-    		//songs.songs[i+currentSongsLength] = processedPulledSongs[i];
     	}
     	//now songs is updated.  Randomly select 10 of them
     	//create array same size as songs with integers in ascending order
@@ -101,7 +173,7 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     		pickedSongs[k]=songs.songs[shuffledInts[k]];
     	}
     	res.send(pickedSongs);
-    	// //res.send(processedPulledSongs);
+    	//res.send(processedPulledSongs);
 
     	//res.send(shuffledInts);
 
