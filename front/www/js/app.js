@@ -171,7 +171,8 @@
             $ionicPopup.confirm({
                 scope: $scope,
                 title: 'Select Song',
-                templateUrl: 'popup-song.html'
+                templateUrl: 'popup-song.html',
+                okType: 'button-royal'
             }).then(function(resp) {
                 if (resp) {
                     $scope.upNext = $scope.selectSong;
