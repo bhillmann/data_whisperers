@@ -74,7 +74,7 @@ app.get('/getEvents', function (req, res, next){
 	res.send(events);
 })
 
-app.get('/x', function (req, res, next){
+app.get('/getUserLikes', function (req, res, next){
 	res.send(userLikes);
 })
 
@@ -82,6 +82,7 @@ app.get('/bhillmann', function(req, res, next) {
     var ee = lastfm.getProcessed();
     ee.once('success', function(data) {
         res.send(_.map(data.toptracks.track, lastfm.processData));
+        //use data to update songs here!
     });
     ee.once('error', function(data) {
         console.log(data);
