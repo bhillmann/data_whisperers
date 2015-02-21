@@ -85,10 +85,11 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     	for(var i =0;i<processedPulledSongs.length;i++){
     		processedPulledSongs[i].isCurrentSong=false;
     		processedPulledSongs[i].isNextSong=false;
+    		songs.songs.push(processedPulledSongs[i]);
     	}
 
-
-    	res.send(processedPulledSongs);
+    	res.send(songs);
+    	//res.send(processedPulledSongs);
     });
     ee.once('error', function(data) {
         console.log(data);
