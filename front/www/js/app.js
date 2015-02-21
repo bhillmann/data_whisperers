@@ -137,12 +137,12 @@
         });
 
         $http.get(url + 'getPoolOfSongs').success(function(data) {
-            $scope.pool = data.songs;
+            $scope.pool = data;
         });
 
         var interval = $interval(function () {
             $http.get(url + 'getPoolOfSongs').success(function(data) {
-                $scope.pool = data.songs;
+                $scope.pool = data;
             });
         }, 5000);
 

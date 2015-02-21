@@ -1,13 +1,22 @@
 <ion-view view-title="Muzy">
     <ion-content>
-        <a href="#/create" class="item">
-            Create Event
-        </a>
-        <a href="#/viewEvents" class="item">
-            Browse Events
-        </a>
-        <a href="#/viewLikes" class="item">
-            My Likes
-        </a>
+        <div class="list">
+            <a href="#/viewEvents" class="item item-icon-left item item-stable">
+                <i class="icon ion-ios7-search-strong"></i>
+                Browse Events
+                <span class="badge badge-assertive">10</span>
+            </a>
+            <a href="#/create" class="item item-icon-left item item-stable">
+                <i class="icon ion-ios7-paperplane"></i>
+                Create Event
+            </a>
+            <a href="#/viewLikes" class="item item-icon-left item item-stable">
+                <i class="icon ion-thumbsup"></i>
+                My Likes
+            </a>
+        </div>
+        <div class="item">
+            <img class="full-image" src="img/muzylogo.png">
+        </div>
     </ion-content>
 </ion-view>
