@@ -87,19 +87,25 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     		processedPulledSongs[i].isNextSong=false;
     		songs.songs.push(processedPulledSongs[i]);
     	}
+
+
+
     	//now songs is updated.  Randomly select 10 of them
     	//create array same size as songs with integers in ascending order
     	var ints = [];
-    	for(var j=0;j<songs.songs.length;j++){
+    	for(var j=0;j<20;j++){
     		ints[j]=j;
     	}
-    	shuffle(ints);
+    	var shuffledInts = shuffle(ints);
     	var pickedSongs=[];
     	for(var k=0;k<10;k++){
-    		pickedSongs.push(songs.songs[ints[k]]);
+    		pickedSongs[k]=songs.songs[shuffledInts[k]];
     	}
     	res.send(pickedSongs);
-    	//res.send(processedPulledSongs);
+    	// //res.send(processedPulledSongs);
+
+    	//res.send(shuffledInts);
+
     });
     ee.once('error', function(data) {
         console.log(data);
@@ -190,3 +196,23 @@ function shuffle(o){ //v1.0
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 };
+
+function shuffle2(array) {
+    var counter = array.length, temp, index;
+
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        index = Math.floor(Math.random() * counter);
+
+        // Decrease counter by 1
+        counter--;
+
+        // And swap the last element with it
+        temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+
+    return array;
+}
