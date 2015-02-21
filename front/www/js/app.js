@@ -1,6 +1,6 @@
 (function(){
 
-  var app = angular.module('starter', ['ionic']);
+  var app = angular.module('whisperers', ['ionic']);
 
   app.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -13,6 +13,10 @@
         StatusBar.styleDefault();
       }
     });
+  });
+
+  app.controller('MainController', function($scope) {
+
   });
 
 })();
