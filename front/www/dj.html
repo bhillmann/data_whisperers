@@ -3,27 +3,29 @@
         <button class="button button-clear icon ion-gear-a"></button>
     </ion-nav-buttons>
     <ion-content class="has-footer">
-        <div class="card">
-            <div class="item item-divider">
-                Now Playing
+        <div class="item item-stable">
+            <div class="card">
+                <div class="item item-royal item-divider">
+                    Now Playing
+                </div>
+                <div class="item item-avatar">
+                    <img class="avatar" src="img/Blank_Space.png">
+                    <h2>{{nowPlaying.title}}</h2>
+                    <p>{{nowPlaying.artist}}</p>
+                </div>
             </div>
-            <div class="item item-avatar">
-                <img class="avatar" src="img/Blank_Space.png">
-                <h2>{{nowPlaying.title}}</h2>
-                <p>{{nowPlaying.artist}}</p>
+            <div class="card">
+                <div class="item item-royal item-divider">
+                    Up Next
+                </div>
+                <div class="item item-avatar">
+                    <img class="avatar" src="img/DarkHorseCover.png">
+                    <h2>{{upNext.title}}</h2>
+                    <p>{{upNext.artist}}</p>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="item item-divider">
-                Up Next
-            </div>
-            <div class="item item-avatar">
-                <img class="avatar" src="img/DarkHorseCover.png">
-                <h2>{{upNext.title}}</h2>
-                <p>{{upNext.artist}}</p>
-            </div>
-        </div>
-        <div class="item item-divider">
+        <div class="item item-dark item-divider">
             Suggestions
         </div>
         <div class="row no-padding">

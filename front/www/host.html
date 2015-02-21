@@ -2,19 +2,9 @@
     <ion-nav-buttons side="right">
         <button class="button button-clear icon ion-gear-a"></button>
     </ion-nav-buttons>
-    <ion-content class="has-footer" class="background-muzy">
+    <ion-content class="has-footer background-muzy">
         <div class="card">
-            <div class="item item-divider">
-                Up Next
-            </div>
-            <div class="item item-avatar">
-                <img class="avatar" src="img/DarkHorseCover.png">
-                <h2 class="padding-top">{{upNext.title}}</h2>
-                <p>{{upNext.artist}}</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="item item-divider">
+            <div class="item item-royal item-divider">
                 Now Playing
             </div>
             <div class="item item-thumbnail-left">
@@ -39,6 +29,16 @@
                     <i class="icon ion-heart"></i>
                     Share
                 </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-royal item-divider">
+                Up Next
+            </div>
+            <div class="item item-avatar">
+                <img class="avatar" src="img/DarkHorseCover.png">
+                <h2 class="padding-top">{{upNext.title}}</h2>
+                <p>{{upNext.artist}}</p>
             </div>
         </div>
     </ion-content>

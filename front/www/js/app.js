@@ -121,7 +121,7 @@
 
     app.controller('HostController', function($scope, $http) {
         $scope.event = myEvent;
-
+        $scope.event.userCount = 18;
         $scope.nowPlaying = {};
         $scope.upNext = {};
 
@@ -134,7 +134,7 @@
 
     app.controller('DjController', function($scope, $ionicPopup, $http, $interval) {
         $scope.event = myEvent;
-        $scope.event.userCount = 0;
+        $scope.event.userCount = 34;
         $scope.nowPlaying = {};
         $scope.upNext = {};
         $scope.pool = [];

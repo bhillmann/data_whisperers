@@ -1,28 +1,28 @@
 <ion-view view-title="Create Event" ng-controller="CreateController">
     <ion-content>
-        <label class="item item-input">
+        <label class="item item-input item-stable">
             <span class="input-label">Event Name</span>
             <input type="text" placeholder="My Event" ng-model="event.name">
         </label>
-        <div class="item item-input">
+        <div class="item item-input item-stable">
             <span class="input-label">Location</span>
             <input type="text" placeholder="Event Location" ng-model="event.location">
         </div>
-        <div class="item item-input">
+        <div class="item item-input item-stable">
             <span class="input-label">Start Time</span>
             <input type="text" placeholder="Start Time" ng-model="event.startTime">
         </div>
-        <label class="item item-input" ng-click="openFilterPopover($event)">
+        <label class="item item-input item-stable" ng-click="openFilterPopover($event)">
             <span class="input-label">Music Filter</span>
             {{event.filter}}
         </label>
-        <ion-checkbox ng-model="event.useDJ" class="item-checkbox-right checkbox-royal">
+        <ion-checkbox ng-model="event.useDJ" class="item-checkbox-right checkbox-royal item-stable">
             Use Live DJ
         </ion-checkbox>
-        <label class="item item-input">
+        <label class="item item-input item-stable">
             <textarea placeholder="Description" rows="4" ng-model="event.description"></textarea>
         </label>
-        <div class="item">
+        <div class="item item-stable">
             <a href="" class="button button-block button-royal" ng-click="publish()">
                 Publish
             </a>
