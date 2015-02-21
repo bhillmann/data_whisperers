@@ -82,10 +82,12 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     var ee = lastfm.getProcessed();
     ee.once('success', function(data) {
     	var processedPulledSongs = _.map(data.toptracks.track, lastfm.processData);
+    	var currentSongsLength = songs.songs.length;
     	for(var i =0;i<processedPulledSongs.length;i++){
     		processedPulledSongs[i].isCurrentSong=false;
     		processedPulledSongs[i].isNextSong=false;
     		songs.songs.push(processedPulledSongs[i]);
+    		//songs.songs[i+currentSongsLength] = processedPulledSongs[i];
     	}
 
 
