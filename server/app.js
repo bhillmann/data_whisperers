@@ -89,9 +89,6 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     		songs.songs.push(processedPulledSongs[i]);
     		//songs.songs[i+currentSongsLength] = processedPulledSongs[i];
     	}
-
-
-
     	//now songs is updated.  Randomly select 10 of them
     	//create array same size as songs with integers in ascending order
     	var ints = [];

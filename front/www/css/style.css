@@ -47,3 +47,12 @@ h1 {
     background-position: center bottom;
     background-repeat: no-repeat;
 }
+
+.row-10 {
+    margin-bottom: 10px;
+}
+
+.row-40 {
+    margin-bottom: 40px;
+    
+}
