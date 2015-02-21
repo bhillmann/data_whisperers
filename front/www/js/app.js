@@ -46,6 +46,10 @@
             .state('viewLikes', {
                 url: '/viewLikes',
                 templateUrl: 'user_likes_view.html'
+            })
+            .state('populate', {
+                url: '/populate',
+                templateUrl: 'populate.html'
             });
         $urlRouterProvider.when('', '/#');
     });
@@ -190,6 +194,11 @@
         $http.get(url + 'getUserLikes').success(function(data){
             $scope.userLikes = data.userLikes;
         });
+    });
+    
+    app.controller('PopulateController', function($scope, $http) {
+        
+        
     });
 
 })();
