@@ -87,8 +87,18 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     		processedPulledSongs[i].isNextSong=false;
     		songs.songs.push(processedPulledSongs[i]);
     	}
-
-    	res.send(songs);
+    	//now songs is updated.  Randomly select 10 of them
+    	//create array same size as songs with integers in ascending order
+    	var ints = [];
+    	for(var j=0;j<songs.songs.length;j++){
+    		ints[j]=j;
+    	}
+    	shuffle(ints);
+    	var pickedSongs=[];
+    	for(var k=0;k<10;k++){
+    		pickedSongs.push(songs.songs[ints[k]]);
+    	}
+    	res.send(pickedSongs);
     	//res.send(processedPulledSongs);
     });
     ee.once('error', function(data) {
@@ -104,23 +114,22 @@ app.get('/displayCurrentEvent', function (req, res, next){
 //have front end say that it's the current event
 app.post('/postEvent', function (req, res, next){
 	//step 1: update the events object
-	// for(var i=0;i<events.events.length;i++){
-	// 	var current = events.events[i];
-	// 	if(current.isCurrentEvent){
-	// 		current.isCurrentEvent=false;
-	// 	}
-	// }
-	// //then add the event from req to events
-	// console.log(req);
-	// var jsonEvent = {};
-	// events.events.push(jsonEvent);
+	for(var i=0;i<events.events.length;i++){
+		var current = events.events[i];
+		if(current.isCurrentEvent){
+			current.isCurrentEvent=false;
+		}
+	}
+	//then add the event from req to events
+	console.log(req);
+	var jsonEvent = {};
+	events.events.push(jsonEvent);
 	//TODO: add this new event to events
 	console.log(req);
 
 
 
-	//send the req back
-	var newRes = req;
+	//we are just sending the request back
 	res.send(req.body);
 })
 
@@ -167,13 +176,17 @@ function updateSongs(retrievedSongs){
 	}
 }
 
-//updateSongs(lastFMSongs);
-
 var server = app.listen(8080, function () {
   var host = server.address().address
   var port = server.address().port
   console.log('leezy listening at http://%s:%s', host, port);
   console.log("LOGGING REAL Songs");
-  //console.log(lastFMSongs);
-  //console.log(songs);
 })
+
+//UTILITY FUNCTIONS
+//+ Jonas Raoni Soares Silva
+//@ http://jsfromhell.com/array/shuffle [v1.0]
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
