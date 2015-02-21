@@ -1,5 +1,7 @@
 (function(){
 
+    var url = "http://localhost:8080/";
+
     var app = angular.module('whisperers', ['ionic']);
 
     app.run(function($ionicPlatform) {
@@ -51,7 +53,7 @@
         userCount: 18
     };
 
-    app.controller('CreateController', function($scope, $ionicPopover, $state) {
+    app.controller('CreateController', function($scope, $ionicPopover, $state, $http) {
         $scope.event = {
             filter: 'None'
         };
@@ -78,7 +80,9 @@
 
         $scope.publish = function() {
             myEvent = $scope.event;
-            // push event to server
+
+            $http.post(url + 'postEvent', myEvent).success();
+
             if ($scope.event.useDJ) {
                 $state.go('dj');
             } else {
@@ -136,7 +140,7 @@
     var curEvent;
 
     app.controller('BrowseController', function($scope, $state, $http){
-        $http.get('http://localhost:8080/getEvents').success(function(data, status, headers, config) {
+        $http.get(url + 'getEvents').success(function(data, status, headers, config) {
             $scope.eventsData = data;
         });
 
@@ -153,7 +157,7 @@
     app.controller('PrefController', function($scope, $http) {
 
         $scope.test = function() {
-            $http.get('http://localhost:8080/getUserLikes').success(function(data, status, headers, config) {
+            $http.get(url + 'getUserLikes').success(function(data, status, headers, config) {
                 $scope.httpData = data;
             });
         };
