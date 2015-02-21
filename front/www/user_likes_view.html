@@ -1,0 +1,18 @@
+<ion-view view-title="Muzy" ng-controller="LikesController">
+    <ion-content>
+        <div class item>
+            <h1 class="item"> Your Likes
+            </h1>
+        </div>
+        <div>
+            <div class="list">
+                <a class="item item-thumbnail-left" href="#" ng-repeat = "song in userLikes">
+                    <img src="cover.jpg">
+                    <h2>{{song.title}}</h2>
+                    <p>{{song.artist}}</p>
+                </a>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

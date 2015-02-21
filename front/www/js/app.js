@@ -40,6 +40,19 @@
             .state('viewCurEvent', {
                 url: '/viewCurEvent',
                 templateUrl: 'guest_currentEvent.html'
+            })
+
+            .state('viewPref', {
+                url: '/viewPref',
+                templateUrl: 'user_preferences.html'
+            })
+
+
+            .state('viewLikes', {
+                url: '/viewLikes',
+                templateUrl: 'user_likes_view.html'
+
+
             });
         $urlRouterProvider.when('', '/#');
     });
@@ -149,7 +162,6 @@
 
 
         $scope.viewCurrentEvent = function(event){
-
             curEvent = event;
             $state.go("viewCurEvent")
 
@@ -159,6 +171,12 @@
     app.controller('PrefController', function($scope) {
 
     });
+
+    app.controller('LikesController'), function($scope, $http) {
+        $http.get(url + 'getUserLikes').success(function(data){
+            $scope.userLikes = data.userLikes;
+        });
+    };
 
 })();
 
