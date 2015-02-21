@@ -4,7 +4,12 @@
 
 var LastFmNode = require('lastfm').LastFmNode;
 var _ = require('underscore');
-
+var fs = require('fs');
+// So dumb
+var ewait = require("ewait");
+var all = new ewait.WaitForAll({
+    event: 'success'    // Wait for a custom event.
+});
 var config = require('./config');
 
 var lastfm = new LastFmNode({
@@ -14,8 +19,15 @@ var lastfm = new LastFmNode({
 
 function getProcessed() {
     return lastfm.request('user.getTopTracks', {
-            user: 'bhillmann'
+        user: "bhillmann"
     });
+
+    //ee.on('success', function(data) {
+    //    var p = _.map(data.toptracks.track, processData);
+    //    fs.writeFile('./lastfm.json', JSON.stringify(p));
+    //});
+    //ee.on('error', function(data) {
+    //});
 }
 
 function processData(value, key) {
@@ -25,6 +37,8 @@ function processData(value, key) {
     processed.dateLiked = "Feb. 21 2015";
     return processed;
 }
+
+getProcessed();
 
 exports.getProcessed = getProcessed;
 exports.processData = processData;
