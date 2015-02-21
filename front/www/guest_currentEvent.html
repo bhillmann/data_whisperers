@@ -1,34 +1,35 @@
-<ion-view view-title="Current Event Name">
+<ion-view view-title="{{event.name}}" ng-controller="GuestController">
     <ion-content>
-            <div class="list card">
-                <div class="item item-image">
-                    <img src="img/riptide.jpg">
-                </div>
-                <div class="item">
-                    <!--<img src="img/riptide.jpg">-->
-                    <h1 class = 'text-center'>Riptide</h1>
-                    <p class = 'text-center'>Vance Joy</p>
-                </div>
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-thumbsup"></i>
-                        Like
-                    </a>
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-thumbsdown"></i>
-                        Dislike
-                    </a>
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-heart"></i>
-                        Share
-                    </a>
-                </div>
+        <div class="list card">
+            <div class="item item-image">
+                <img src="img/riptide.jpg">
             </div>
             <div class="item">
-                <button class="button button-balanced button-block">
-                    Get More Info
-                </button>
+                <h1 class='text-center'>Riptide</h1>
+                <p class='text-center'>Vance Joy</p>
             </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsup"></i>
+                    Like
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsdown"></i>
+                    Dislike
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-heart"></i>
+                    Share
+                </a>
+            </div>
+        </div>
+
+
+        <div class="item">
+            <button class="button button-balanced button-block">
+                Get More Info
+            </button>
         </div>
     </ion-content>
 </ion-view>

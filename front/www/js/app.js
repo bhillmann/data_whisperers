@@ -1,5 +1,7 @@
 (function(){
 
+    var url = "http://localhost:8080/";
+
     var app = angular.module('whisperers', ['ionic']);
 
     app.run(function($ionicPlatform) {
@@ -41,20 +43,23 @@
                 url: '/viewCurEvent',
                 templateUrl: 'guest_currentEvent.html'
             })
-
-            .state('viewPref', {
-                url: '/viewPref',
-                templateUrl: 'user_preferences.html'
-            })
-
-
             .state('viewLikes', {
                 url: '/viewLikes',
                 templateUrl: 'user_likes_view.html'
-
-
             });
         $urlRouterProvider.when('', '/#');
+    });
+
+    app.filter('alternate', function () {
+        return function (items, isEven) {
+            var filtered = [];
+            for (var i = 0; i < items.length; i++) {
+                if (isEven ^ (i % 2 != 0)) {
+                    filtered.push(items[i]);
+                }
+            }
+            return filtered;
+        };
     });
 
     var myEvent = {
@@ -64,7 +69,7 @@
         userCount: 18
     };
 
-    app.controller('CreateController', function($scope, $ionicPopover, $state) {
+    app.controller('CreateController', function($scope, $ionicPopover, $state, $http) {
         $scope.event = {
             filter: 'None'
         };
@@ -90,49 +95,46 @@
         });
 
         $scope.publish = function() {
-            myEvent = $scope.event;
-            // push event to server
-            if ($scope.event.useDJ) {
-                $state.go('dj');
-            } else {
-                $state.go('event-host');
-            }
+            $http.post(url + 'postEvent', $scope.event).success(function(data) {
+                myEvent = data;
+                if ($scope.event.useDJ) {
+                  $state.go('dj');
+                } else {
+                  $state.go('event-host');
+                }
+            });
         };
 
     });
 
-    app.controller('HostController', function($scope) {
+    app.controller('HostController', function($scope, $http) {
         $scope.event = myEvent;
-        $scope.nowPlaying = {
-            title: "Blank Space",
-            artist: "Taylor Swift",
-            img: "img/Blank_Space.png"
-        };
-        $scope.upNext = {
-            title: "Uptown Funk",
-            artist: "Mark Ronson",
-            img: "img/Uptown_Funk.png"
-        };
+
+        $scope.nowPlaying = {};
+        $scope.upNext = {};
+
+        $http.get(url + 'displayCurrentEvent').success(function(data) {
+            $scope.nowPlaying = data.currentSong;
+            $scope.upNext = data.nextSong;
+        });
+
     });
 
-    app.controller('DjController', function($scope, $ionicPopup) {
+    app.controller('DjController', function($scope, $ionicPopup, $http) {
         $scope.event = myEvent;
         $scope.event.userCount = 0;
-        $scope.nowPlaying = {
-            title: "Blank Space",
-            artist: "Taylor Swift",
-            img: "img/Blank_Space.png"
-        };
-        $scope.upNext = {
-            title: "Uptown Funk",
-            artist: "Mark Ronson",
-            img: "img/Uptown_Funk.png"
-        };
+        $scope.nowPlaying = {};
+        $scope.upNext = {};
+        $scope.pool = [];
 
-        $scope.song = {
-            title: "This is an extremely long Title",
-            artist: "Rae Sremmurd"
-        };
+        $http.get(url + 'displayCurrentEvent').success(function(data) {
+            $scope.nowPlaying = data.currentSong;
+            $scope.upNext = data.nextSong;
+        });
+
+        $http.get(url + 'getPoolOfSongs').success(function(data) {
+            $scope.pool = data.songs;
+        });
 
         $scope.popupSong = function(song) {
             $scope.selectSong = song;
@@ -140,36 +142,40 @@
                 scope: $scope,
                 title: 'Select Song',
                 templateUrl: 'popup-song.html'
-            }).then(function() {
-
+            }).then(function(resp) {
+                if (resp) {
+                    // confirm
+                } else {
+                    // nothing really
+                }
             });
-        }
+        };
     });
 
     var curEvent;
 
-    app.controller('curEventController', function($scope){
+    app.controller('BrowseController', function($scope, $state, $http){
+        $http.get(url + 'getEvents').success(function(data, status, headers, config) {
+            $scope.eventsData = data;
+        });
 
-    });
-
-    app.controller('MainController', function($scope, $state) {
-        $scope.createEvent = [{
-            eventName: "filter",
-            name: "name",
-            location: "location",
-            desc: ""
-        }];
-
-
-        $scope.viewCurrentEvent = function(event){
+        $scope.goEvent = function(event) {
             curEvent = event;
-            $state.go("viewCurEvent")
-
+            $state.go("viewCurEvent");
         }
     });
 
-    app.controller('PrefController', function($scope) {
+    app.controller('GuestController', function($scope){
+        $scope.event = curEvent;
+    });
 
+    app.controller('PrefController', function($scope, $http) {
+
+        $scope.test = function() {
+            $http.get(url + 'getUserLikes').success(function(data, status, headers, config) {
+                $scope.httpData = data;
+            });
+        };
     });
 
     app.controller('LikesController'), function($scope, $http) {

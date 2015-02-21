@@ -1,18 +1,15 @@
-<ion-view view-title="Muzy">
-    <ion-header-bar>
-        <h1 class="title">Browse Events</h1>
-    </ion-header-bar>
+<ion-view view-title="Browse Events" ng-controller="BrowseController">
     <ion-content>
         <div class="list">
             <div class="item item-divider">
                 Upcoming Events
             </div>
-            <a class="item item-thumbnail-left" href="#/viewCurEvent">
-                <img src="MF.jpg">
-                <h2>Event 1</h2>
-                <p>Address: Kagin</p>
-                <p>Time: 10:30 pm</p>
-            </a>
+            <div class="item item-thumbnail-left" ng-click="goEvent(event)" ng-repeat="event in eventsData.events">
+                <img src="cover.jpg">
+                <h2>{{event.name}}</h2>
+                <p>Address: {{event.location}}</p>
+                <p>Time: {{event.startTime}}</p>
+            </div>
         </div>
     </ion-content>
-</ion-view><html>
+</ion-view>

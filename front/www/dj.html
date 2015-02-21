@@ -28,58 +28,18 @@
         </div>
         <div class="row no-padding">
             <div class="col no-padding">
-                <div class="item item-avatar item" ng-click="popupSong(song)">
+                <div class="item item-avatar item" ng-click="popupSong(song)" ng-repeat="song in pool | alternate:true">
                     <img src="img/Blank_Space.png">
                     <h2>{{song.title}}</h2>
                     <p>{{song.artist}}</p>
                 </div>
-                <a class="item item-avatar" href="#">
-                    <img src="img/Blank_Space.png">
-                    <h2>Drunk in Love</h2>
-                    <p>Beyonce</p>
-                </a>
-                <a class="item item-avatar" href="#">
-                    <img src="img/Blank_Space.png">
-                    <h2>Venkman</h2>
-                    <p>Back off, man. I'm a scientist.</p>
-                </a>
-                <a class="item item-avatar" href="#">
-                    <img src="img/Blank_Space.png">
-                    <h2>Venkman</h2>
-                    <p>Back off, man. I'm a scientist.</p>
-                </a>
-                <a class="item item-avatar" href="#">
-                    <img src="img/Blank_Space.png">
-                    <h2>Venkman</h2>
-                    <p>Back off, man. I'm a scientist.</p>
-                </a>
             </div>
             <div class="col no-padding">
-                <a class="item item-avatar" href="#">
+                <div class="item item-avatar item" ng-click="popupSong(song)" ng-repeat="song in pool | alternate:false">
                     <img src="img/Blank_Space.png">
-                    <h2>Venkman</h2>
-                    <p>Back off, man. I'm a scientist.</p>
-                </a>
-                <a class="item item-avatar" href="#">
-                    <img src="img/Blank_Space.png">
-                    <h2>Venkman</h2>
-                    <p>Back off, man. I'm a scientist.</p>
-                </a>
-                <a class="item item-avatar" href="#">
-                    <img src="img/Blank_Space.png">
-                    <h2>Venkman</h2>
-                    <p>Back off, man. I'm a scientist.</p>
-                </a>
-                <a class="item item-avatar" href="#">
-                    <img src="img/Blank_Space.png">
-                    <h2>Venkman</h2>
-                    <p>Back off, man. I'm a scientist.</p>
-                </a>
-                <a class="item item-avatar" href="#">
-                    <img src="img/Blank_Space.png">
-                    <h2>Venkman</h2>
-                    <p>Back off, man. I'm a scientist.</p>
-                </a>
+                    <h2>{{song.title}}</h2>
+                    <p>{{song.artist}}</p>
+                </div>
             </div>
         </div>
     </ion-content>

@@ -4,6 +4,7 @@
 
 var LastFmNode = require('lastfm').LastFmNode;
 var _ = require('underscore');
+var fs = require('fs');
 
 var config = require('./config');
 
@@ -14,8 +15,15 @@ var lastfm = new LastFmNode({
 
 function getProcessed() {
     return lastfm.request('user.getTopTracks', {
-            user: 'bhillmann'
+        user: "bhillmann"
     });
+
+    //ee.on('success', function(data) {
+    //    var p = _.map(data.toptracks.track, processData);
+    //    fs.writeFile('./lastfm.json', JSON.stringify(p));
+    //});
+    //ee.on('error', function(data) {
+    //});
 }
 
 function processData(value, key) {
@@ -26,8 +34,7 @@ function processData(value, key) {
     return processed;
 }
 
-//getProcessed().once('success', function(data) {
-//    return data;
-//});
+getProcessed();
 
 exports.getProcessed = getProcessed;
+exports.processData = processData;

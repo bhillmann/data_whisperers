@@ -8,6 +8,10 @@
             <span class="input-label">Location</span>
             <input type="text" placeholder="My Location" ng-model="event.location">
         </div>
+        <div class="item item-input">
+            <span class="input-label">Start Time</span>
+            <input type="text" placeholder="Start Time" ng-model="event.startTime">
+        </div>
         <label class="item item-input" ng-click="openFilterPopover($event)">
             <span class="input-label">Music Filter</span>
             {{event.filter}}
@@ -16,20 +20,12 @@
             Use Live DJ
         </ion-checkbox>
         <label class="item item-input">
-            <textarea placeholder="Description" rows="4" ng-model="event.desc"></textarea>
+            <textarea placeholder="Description" rows="4" ng-model="event.description"></textarea>
         </label>
         <div class="item">
             <a href="" class="button button-block button-balanced" ng-click="publish()">
                 Publish
             </a>
-        </div>
-        <div class="card">
-            <div class="item item-divider">
-                Debug
-            </div>
-            <div class="item item-text-wrap">
-                {{event}}
-            </div>
         </div>
     </ion-content>
 </ion-view>
