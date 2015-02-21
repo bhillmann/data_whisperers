@@ -26,8 +26,5 @@ function processData(value, key) {
     return processed;
 }
 
-//getProcessed().once('success', function(data) {
-//    return data;
-//});
-
 exports.getProcessed = getProcessed;
+exports.processData = processData;
