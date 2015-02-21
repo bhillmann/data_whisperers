@@ -21,12 +21,10 @@ var _ = require("underscore");
 
 //END GETTING REAL DATA
 
-//require('./lastfm.js');
-
 //CREATING FAKE DATA
 var events = {"events":[
-    {"name":"Plums", "location":"Plums","filter":["rap","rock"],"description":"Thursday night at Plums!","DJ":true, "isCurrentEvent":true}, 
-    {"name":"Ben's House", "location":"Grand Ave.","filter":["country","folk","metal"],"description":"A killer time to be sure.","DJ":false, "isCurrentEvent":false} 
+    {"name":"Plums", "location":"Plums","filter":["rap","rock"],"description":"Thursday night at Plums!","DJ":true, "isCurrentEvent":true, "startTime":"12:00 am"}, 
+    {"name":"Ben's House", "location":"Grand Ave.","filter":["country","folk","metal"],"description":"A killer time to be sure.","DJ":false, "isCurrentEvent":false, "startTime":"11 pm"} 
 ]}
 
 var userLikes ={"userLikes":[
@@ -42,7 +40,13 @@ var songs ={"songs":[
 	{"songName":"Don't Trip", "artist":"Vitamin P","isCurrentSong":false,"isNextSong":false},
 	{"songName":"Blank Space", "artist":"Taylor Swift","isCurrentSong":true,"isNextSong":false},
 	{"songName":"SexyBack", "artist":"Justin Timberlake","isCurrentSong":false,"isNextSong":false},
-	{"songName":"Can I Kick it?", "artist":"A Tribe Called Quest","isCurrentSong":false,"isNextSong":false}
+	{"songName":"Can I Kick it?", "artist":"A Tribe Called Quest","isCurrentSong":false,"isNextSong":false},
+	{"songName":"Mom's Spaghetti", "artist":"Eminem","isCurrentSong":false,"isNextSong":false},
+	{"songName":"Rocket Man", "artist":"Elton John","isCurrentSong":false,"isNextSong":false},
+	{"songName":"Forever Young", "artist":"Jay Z","isCurrentSong":false,"isNextSong":false},
+	{"songName":"Scooby and the Gang", "artist":"Those Meddling Kids","isCurrentSong":false,"isNextSong":false},
+	{"songName":"Thundercats", "artist":"Lavender Gooms","isCurrentSong":false,"isNextSong":false},
+
 ]}
 
 
@@ -85,34 +89,41 @@ app.get('/bhillmann', function(req, res, next) {
 })
 
 app.get('/displayCurrentEvent', function (req, res, next){
-	res.send(getCurrEventAndCurrSong);
+	res.send(getCurrEventAndCurrSongAndNextSong());
 })
 
 //this takes in the data from the create event page.  
 //have front end say that it's the current event
 app.post('/postEvent', function (req, res, next){
 	//step 1: update the events object
-	for(var i=0;i<events.events.length;i++){
-		var current = events.events[i];
-		if(current.isCurrentEvent){
-			current.isCurrentEvent=false;
-		}
-	}
-	//then add the event from req to events
-	var jsonEvent = {};
-	events.events.push(jsonEvent);
+	// for(var i=0;i<events.events.length;i++){
+	// 	var current = events.events[i];
+	// 	if(current.isCurrentEvent){
+	// 		current.isCurrentEvent=false;
+	// 	}
+	// }
+	// //then add the event from req to events
+	// console.log(req);
+	// var jsonEvent = {};
+	// events.events.push(jsonEvent);
+	//TODO: add this new event to events
+	console.log(req);
+
+
 
 	//send the req back
-	res.send(req);
+	var newRes = req;
+	res.send(req.body);
 })
 
 app.get('/getPoolOfSongs', function (req, res, next){
 	res.send(songs);
 })
 
-function getCurrEventAndCurrSong(){
+function getCurrEventAndCurrSongAndNextSong(){
 	var currEvent = "";
 	var currSong = "";
+	var nextSong = "";
 	console.log(events.events.length);
 	console.log(events.events);
 	console.log(songs.songs);
@@ -127,10 +138,19 @@ function getCurrEventAndCurrSong(){
 	for(var j=0;j<songs.songs.length;j++){
 		var current = songs.songs[j];
 		if(current.isCurrentSong){
-			currSong=current.songName + " by " + current.artist;
+			currSong={
+				title: current.songName,
+				artist: current.artist
+			};
+		}
+		if(current.isNextSong){
+			nextSong={
+				title: current.songName,
+				artist: current.artist
+			};
 		}
 	}
-	return({"currentEvent":currEvent, "currentSong":currSong});
+	return({"currentEvent":currEvent, "currentSong":currSong, "nextSong":nextSong});
 }
 
 function updateSongs(retrievedSongs){
