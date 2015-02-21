@@ -79,7 +79,7 @@ app.get('/bhillmann'), function(req, res, next) {
 }
 
 app.get('/displayCurrentEvent', function (req, res, next){
-	res.send(getCurrEventAndCurrSong);
+	res.send(getCurrEventAndCurrSongAndNextSong());
 })
 
 //this takes in the data from the create event page.  
@@ -96,7 +96,7 @@ app.post('/postEvent', function (req, res, next){
 	// console.log(req);
 	// var jsonEvent = {};
 	// events.events.push(jsonEvent);
-
+	//TODO: add this new event to events
 	console.log(req);
 
 
@@ -110,9 +110,10 @@ app.get('/getPoolOfSongs', function (req, res, next){
 	res.send(songs);
 })
 
-function getCurrEventAndCurrSong(){
+function getCurrEventAndCurrSongAndNextSong(){
 	var currEvent = "";
 	var currSong = "";
+	var nextSong = "";
 	console.log(events.events.length);
 	console.log(events.events);
 	console.log(songs.songs);
@@ -127,10 +128,19 @@ function getCurrEventAndCurrSong(){
 	for(var j=0;j<songs.songs.length;j++){
 		var current = songs.songs[j];
 		if(current.isCurrentSong){
-			currSong=current.songName + " by " + current.artist;
+			currSong={
+				title: current.songName,
+				artist: current.artist
+			};
+		}
+		if(current.isNextSong){
+			nextSong={
+				title: current.songName,
+				artist: current.artist
+			};
 		}
 	}
-	return({"currentEvent":currEvent, "currentSong":currSong});
+	return({"currentEvent":currEvent, "currentSong":currSong, "nextSong":nextSong});
 }
 
 function updateSongs(retrievedSongs){

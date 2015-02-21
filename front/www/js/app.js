@@ -107,7 +107,7 @@
         //    img: "img/Uptown_Funk.png"
         //};
 
-        $http.get(url + 'getDisplayCurrentEvent').success(function(data) {
+        $http.get(url + 'displayCurrentEvent').success(function(data) {
             $scope.nowPlaying = data.currentSong;
             $scope.upNext = data.nextSong;
         });
