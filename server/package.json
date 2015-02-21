@@ -1,45 +1,27 @@
 {
   "name": "data-whisperers",
-  "version": "0.0.0",
-  "description": "The best module ever.",
-
-  "author": {
-    "name": "Ben Hillmann",
-    "email": "bhillmann@outlook.com"
+  "version": "1.0.0",
+  "description": "Macathon 2015",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "bhillmann/data-whisperers",
-  "license": "GNU",
-  "files": [
-    "index.js",
-    "cli.js"
-  ],
-  "keywords": [
-    "data-whisperers",
-    ""
-  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhillmann/data_whisperers"
+  },
+  "author": "Sam Naden",
+  "license": "ISC",
   "dependencies": {
-    "meow": "^2.0.0”,
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "load-grunt-tasks": "^1.0.0",
-    "time-grunt": "^1.0.0",
-    "grunt-mocha-cli": "^1.11.0",
-    "jshint-stylish": "^1.0.0",
-    "browserify": "^7.0.0”,
     "body-parser": "^1.10.0",
+    "echojs": "^0.1.4",
     "express": "^4.10.4",
     "jade": "^1.7.0",
+    "lastfm": "^0.9.2",
     "mongoskin": "^1.4.4",
     "morgan": "^1.5.0",
-    "socket.io": "^1.2.0"
-  },
-  "scripts": {
-    "test": "grunt",
-    "browser": "browserify index.js > browser.js"
-  },
-  "bin": {
-    "data-whisperers": "cli.js"
+    "request": "^2.53.0",
+    "socket.io": "^1.2.0",
+    "underscore": "^1.8.1"
   }
 }

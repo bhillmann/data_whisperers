@@ -1,0 +1,50 @@
+<ion-view view-title="{{event.name}}" ng-controller="HostController">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear icon ion-gear-a"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-footer">
+        <div class="card">
+            <div class="item item-divider">
+                Up Next
+            </div>
+            <div class="item item-avatar">
+                <img class="avatar" src="{{upNext.img}}">
+                <h2 class="padding-top">{{upNext.title}}</h2>
+                <p>{{upNext.artist}}</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider">
+                Now Playing
+            </div>
+            <div class="item item-thumbnail-left">
+                <img class="avatar" src="{{nowPlaying.img}}">
+                <h1>{{nowPlaying.title}}</h1>
+                <p>{{nowPlaying.artist}}</p>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-skip-forward"></i>
+                    Skip
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsup"></i>
+                    Like
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-thumbsdown"></i>
+                    Dislike
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-heart"></i>
+                    Share
+                </a>
+            </div>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-stable">
+        <h1 class="title">
+            {{event.userCount}} Guests Checked In
+        </h1>
+    </div>
+</ion-view>
