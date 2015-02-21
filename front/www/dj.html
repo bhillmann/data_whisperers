@@ -1,0 +1,91 @@
+<ion-view view-title="{{event.name}}" ng-controller="DjController">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear icon ion-gear-a"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-footer">
+        <div class="card">
+            <div class="item item-divider">
+                Now Playing
+            </div>
+            <div class="item item-avatar">
+                <img class="avatar" src="{{nowPlaying.img}}">
+                <h2>{{nowPlaying.title}}</h2>
+                <p>{{nowPlaying.artist}}</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider">
+                Up Next
+            </div>
+            <div class="item item-avatar">
+                <img class="avatar" src="{{upNext.img}}">
+                <h2>{{upNext.title}}</h2>
+                <p>{{upNext.artist}}</p>
+            </div>
+        </div>
+        <div class="item item-divider">
+            Suggestions
+        </div>
+        <div class="row no-padding">
+            <div class="col no-padding">
+                <div class="item item-avatar item" ng-click="popupSong(song)">
+                    <img src="img/Blank_Space.png">
+                    <h2>{{song.title}}</h2>
+                    <p>{{song.artist}}</p>
+                </div>
+                <a class="item item-avatar" href="#">
+                    <img src="img/Blank_Space.png">
+                    <h2>Drunk in Love</h2>
+                    <p>Beyonce</p>
+                </a>
+                <a class="item item-avatar" href="#">
+                    <img src="img/Blank_Space.png">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                </a>
+                <a class="item item-avatar" href="#">
+                    <img src="img/Blank_Space.png">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                </a>
+                <a class="item item-avatar" href="#">
+                    <img src="img/Blank_Space.png">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                </a>
+            </div>
+            <div class="col no-padding">
+                <a class="item item-avatar" href="#">
+                    <img src="img/Blank_Space.png">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                </a>
+                <a class="item item-avatar" href="#">
+                    <img src="img/Blank_Space.png">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                </a>
+                <a class="item item-avatar" href="#">
+                    <img src="img/Blank_Space.png">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                </a>
+                <a class="item item-avatar" href="#">
+                    <img src="img/Blank_Space.png">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                </a>
+                <a class="item item-avatar" href="#">
+                    <img src="img/Blank_Space.png">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer bar-stable">
+        <h1 class="title">
+            {{event.userCount}} Guests Checked In
+        </h1>
+    </div>
+</ion-view>
