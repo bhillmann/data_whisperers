@@ -4,7 +4,10 @@
     </ion-header-bar>
     <ion-content>
         <div class="list">
-            <ion-radio ng-model="event.filter" ng-value="filter" ng-repeat="filter in filters" ng-click="closeFilterPopover()">{{filter}}</ion-radio>
+            <ion-radio ng-model="event.filter" ng-value="filter" ng-repeat="filter in filters"
+                       ng-click="closeFilterPopover()">
+                {{filter}}
+            </ion-radio>
         </div>
     </ion-content>
 </ion-popover-view>
