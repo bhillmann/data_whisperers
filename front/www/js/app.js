@@ -24,12 +24,43 @@
         .state('create', {
           url: '/create',
           templateUrl: 'create.html'
-        });
+        })
+        .state('event_host_viewEvents',{
+            url:'/viewEvents',
+            templateUrl: 'event_host_viewEvents.html'
+        })
+
+        .state('viewCurEvent',{
+            url:'/viewCurEvent',
+            templateUrl: 'guest_currentEvent.html'
+        })
+
     $urlRouterProvider.when('', '/#');
   });
 
-  app.controller('MainController', function($scope) {
+ var curEvent;
 
+  app.controller('curEventController', function($scope){
+
+
+
+  });
+
+  app.controller('MainController', function($scope, $state) {
+      $scope.createEvent = [{
+          eventName: "filter",
+          name: "name",
+          location: "location",
+          desc: ""
+      }];
+
+
+      $scope.viewCurrentEvent = function(event){
+
+          curEvent = event;
+          $state.go("viewCurEvent")
+
+      }
   });
 
 })();
