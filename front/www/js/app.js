@@ -44,10 +44,6 @@
         $urlRouterProvider.when('', '/#');
     });
 
-    app.controller('MainController', function($scope) {
-
-    });
-
     var myEvent = {
         name: "Macathon Kagin",
         location: "1600 Grand Ave",
@@ -140,8 +136,6 @@
     var curEvent;
 
     app.controller('curEventController', function($scope){
-
-
 
     });
 
