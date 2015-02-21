@@ -1,6 +1,6 @@
 (function(){
 
-    var url = "http://ec2-52-10-25-198.us-west-2.compute.amazonaws.com:8080/";
+    var url = "http://localhost:8080/";
 
     var app = angular.module('whisperers', ['ionic']);
 
