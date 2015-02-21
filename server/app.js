@@ -11,6 +11,18 @@
 // });
 
 //CREATING FAKE DATA
+var events = {"events":[
+    {"name":"Plums", "location":"Plums","filter":["rap","rock"],"description":"Thursday night at Plums!","DJ":true}, 
+    {"name":"Ben's House", "location":"Grand Ave.","filter":["country","folk","metal"],"description":"A killer time to be sure.","DJ":false} 
+]}
+
+var userLikes ={"userLikes":[
+	{"songName":"Psychosocial", "artist":"Slipknot","dateLiked":"Jan. 15 2015"},
+	{"songName":"Kyoto", "artist":"Yung Lean","dateLiked":"Jan. 14 2015"},
+	{"songName":"America", "artist":"Simon & Garfunkel","dateLiked":"Dec. 3 2014"},
+	{"songName":"Old Man", "artist":"Neil Young","dateLiked":"Nov. 15 2014"},
+	{"songName":"The World's Greatest", "artist":"R. Kelly","dateLiked":"Nov. 10 2014"}
+]}
 
 
 var express = require('express')
@@ -23,7 +35,10 @@ app.use(logger('dev'));
 // Tell Express that we also want to parse json bodies from put or post requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '../front/www')));  //automatically create route for everything in public
+
+//automatically create route for everything in public
+//this makes sure to grab all the files index.html depends on, aka everything in www
+app.use(express.static(path.join(__dirname, '../front/www')));  
 
 //this is the request that starts the app I think
 app.get('/', function (req, res, next) {
