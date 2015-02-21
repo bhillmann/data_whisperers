@@ -10,6 +10,8 @@
 //   });
 // });
 
+lastfm.js;
+
 //CREATING FAKE DATA
 var events = {"events":[
     {"name":"Plums", "location":"Plums","filter":["rap","rock"],"description":"Thursday night at Plums!","DJ":true, "isCurrentEvent":true}, 
@@ -114,6 +116,7 @@ function getCurrEventAndCurrSong(){
 var server = app.listen(8080, function () {
   var host = server.address().address
   var port = server.address().port
+  console.log(lastFMSongs);
   console.log('leezy listening at http://%s:%s', host, port);
 
 })

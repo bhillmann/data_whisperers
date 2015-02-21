@@ -29,11 +29,14 @@
                 url: '/host',
                 templateUrl: 'host.html'
             })
+            .state('dj', {
+                url: '/dj',
+                templateUrl: 'dj.html'
+            })
             .state('event_host_viewEvents',{
                 url:'/viewEvents',
                 templateUrl: 'event_host_viewEvents.html'
             })
-
             .state('viewCurEvent', {
                 url: '/viewCurEvent',
                 templateUrl: 'guest_currentEvent.html'
@@ -80,11 +83,15 @@
         $scope.publish = function() {
             myEvent = $scope.event;
             // push event to server
-            $state.go('event-host');
+            if ($scope.event.useDJ) {
+                $state.go('dj');
+            } else {
+                $state.go('event-host');
+            }
         };
 
     });
-    
+
     app.controller('HostController', function($scope) {
         $scope.event = myEvent;
         $scope.nowPlaying = {
@@ -97,6 +104,37 @@
             artist: "Mark Ronson",
             img: "img/Uptown_Funk.png"
         };
+    });
+
+    app.controller('DjController', function($scope, $ionicPopup) {
+        $scope.event = myEvent;
+        $scope.event.userCount = 0;
+        $scope.nowPlaying = {
+            title: "Blank Space",
+            artist: "Taylor Swift",
+            img: "img/Blank_Space.png"
+        };
+        $scope.upNext = {
+            title: "Uptown Funk",
+            artist: "Mark Ronson",
+            img: "img/Uptown_Funk.png"
+        };
+
+        $scope.song = {
+            title: "This is an extremely long Title",
+            artist: "Rae Sremmurd"
+        };
+
+        $scope.popupSong = function(song) {
+            $scope.selectSong = song;
+            $ionicPopup.confirm({
+                scope: $scope,
+                title: 'Select Song',
+                templateUrl: 'popup-song.html'
+            }).then(function() {
+
+            });
+        }
     });
 
     var curEvent;
