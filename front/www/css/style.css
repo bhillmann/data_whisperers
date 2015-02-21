@@ -40,3 +40,10 @@ h1 {
     width: 75px;
     height: 75px;
 }
+
+.background-muzy {
+    background-image: url('../img/muzylogo.png');
+    background-size: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
