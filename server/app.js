@@ -15,11 +15,10 @@
  * Created by bhillmann on 21/02/15.
  */
 var lastfm = require("./lastfm.js");
+var _ = require("require");
 
 //below code gets the user's top songs and adds them to the songs array
-lastfm.getProcessed().once('success', function(data) {
-	console.log(data.toptracks.track[1]);
-});
+
 //END GETTING REAL DATA
 
 //require('./lastfm.js');
@@ -74,6 +73,12 @@ app.get('/getEvents', function (req, res, next){
 app.get('/getUserLikes', function (req, res, next){
 	res.send(userLikes);
 })
+
+app.get('/bhillmann'), function(req, res, next) {
+    lastfm.getProcessed().once('success', function(data) {
+        res.send(_map(data, lastfm.processData()));
+    });
+}
 
 app.get('/displayCurrentEvent', function (req, res, next){
 	res.send(getCurrEventAndCurrSong);
