@@ -156,5 +156,9 @@
         }
     });
 
+    app.controller('PrefController', function($scope) {
+
+    });
+
 })();
 
