@@ -135,7 +135,7 @@
 
     var curEvent;
 
-    app.controller('BrowseController', function($scope, $state){
+    app.controller('BrowseController', function($scope, $state, $http){
         $http.get('http://localhost:8080/getEvents').success(function(data, status, headers, config) {
             $scope.eventsData = data;
         });
