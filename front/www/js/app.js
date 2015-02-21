@@ -155,7 +155,7 @@
     var curEvent;
 
     app.controller('BrowseController', function($scope, $state, $http){
-        $http.get(url + 'getEvents').success(function(data, status, headers, config) {
+        $http.get(url + 'getEvents').success(function(data) {
             $scope.eventsData = data;
         });
 
@@ -167,22 +167,19 @@
 
     app.controller('GuestController', function($scope){
         $scope.event = curEvent;
+        $scope.nowPlaying = {};
+
+        $http.get(url + 'displayCurrentEvent').success(function(data) {
+            $scope.nowPlaying = data.currentSong;
+        });
+
     });
 
-    app.controller('PrefController', function($scope, $http) {
-
-        $scope.test = function() {
-            $http.get(url + 'getUserLikes').success(function(data, status, headers, config) {
-                $scope.httpData = data;
-            });
-        };
-    });
-
-    app.controller('LikesController'), function($scope, $http) {
+    app.controller('LikesController', function($scope, $http) {
         $http.get(url + 'getUserLikes').success(function(data){
             $scope.userLikes = data.userLikes;
         });
-    };
+    });
 
 })();
 

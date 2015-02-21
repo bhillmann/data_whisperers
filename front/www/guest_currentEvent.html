@@ -1,12 +1,12 @@
 <ion-view view-title="{{event.name}}" ng-controller="GuestController">
     <ion-content>
-        <div class="list card">
+        <div class="card">
             <div class="item item-image">
                 <img src="img/riptide.jpg">
             </div>
             <div class="item">
-                <h1 class='text-center'>Riptide</h1>
-                <p class='text-center'>Vance Joy</p>
+                <h1 class='text-center'>{{nowPlaying.title}}</h1>
+                <p class='text-center'>{{nowPlaying.artist}}</p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
