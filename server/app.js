@@ -15,18 +15,16 @@
  * Created by bhillmann on 21/02/15.
  */
 var lastfm = require("./lastfm.js");
-var _ = require("require");
+var _ = require("underscore");
 
 //below code gets the user's top songs and adds them to the songs array
 
 //END GETTING REAL DATA
 
-//require('./lastfm.js');
-
 //CREATING FAKE DATA
 var events = {"events":[
-    {"name":"Plums", "location":"Plums","filter":["rap","rock"],"description":"Thursday night at Plums!","DJ":true, "isCurrentEvent":true}, 
-    {"name":"Ben's House", "location":"Grand Ave.","filter":["country","folk","metal"],"description":"A killer time to be sure.","DJ":false, "isCurrentEvent":false} 
+    {"name":"Plums", "location":"Plums","filter":["rap","rock"],"description":"Thursday night at Plums!","DJ":true, "isCurrentEvent":true, "startTime":"12:00 am"}, 
+    {"name":"Ben's House", "location":"Grand Ave.","filter":["country","folk","metal"],"description":"A killer time to be sure.","DJ":false, "isCurrentEvent":false, "startTime":"11 pm"} 
 ]}
 
 var userLikes ={"userLikes":[
