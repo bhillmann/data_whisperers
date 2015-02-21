@@ -78,11 +78,18 @@ app.get('/getUserLikes', function (req, res, next){
 	res.send(userLikes);
 })
 
-app.get('/bhillmann', function(req, res, next) {
+app.get('/getPoolOfSongs', function(req, res, next) {
     var ee = lastfm.getProcessed();
     ee.once('success', function(data) {
-        res.send(_.map(data.toptracks.track, lastfm.processData));
-        //use data to update songs here!
+    	var processedPulledSongs = _.map(data.toptracks.track, lastfm.processData);
+    	for(var i =0;i<processedPulledSongs.length;i++){
+    		delete processedPulledSongs.dateLiked;
+    		processedPulledSongs[i].isCurrentSong=false;
+    		processedPulledSongs[i].isNextSong=false;
+    	}
+
+
+    	res.send(processedPulledSongs);
     });
     ee.once('error', function(data) {
         console.log(data);
@@ -117,9 +124,9 @@ app.post('/postEvent', function (req, res, next){
 	res.send(req.body);
 })
 
-app.get('/getPoolOfSongs', function (req, res, next){
-	res.send(songs);
-})
+// app.get('/getPoolOfSongs', function (req, res, next){
+// 	res.send(songs);
+// })
 
 function getCurrEventAndCurrSongAndNextSong(){
 	var currEvent = "";
