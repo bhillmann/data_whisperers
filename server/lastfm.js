@@ -11,11 +11,13 @@ var lastfm = new LastFmNode({
     secret: 'secret'
 });
 
+var lastFMSongs={};
 var test = lastfm.request('user.getTopTracks', {
     user: 'bhillmann',
     handlers: {
         success: function(data) {
             var processed = _.map(data.toptracks.track, processData);
+            lastFMSongs=processed;
             console.log(processed);
         },
         error: function(error) {
