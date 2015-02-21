@@ -10,7 +10,19 @@
 //   });
 // });
 
-lastfm.js;
+//GETTING REAL DATA
+/**
+ * Created by bhillmann on 21/02/15.
+ */
+var lastfm = require("./lastfm.js");
+
+//below code gets the user's top songs and adds them to the songs array
+lastfm.getProcessed().once('success', function(data) {
+	console.log(data.toptracks.track[1]);
+});
+//END GETTING REAL DATA
+
+//require('./lastfm.js');
 
 //CREATING FAKE DATA
 var events = {"events":[
@@ -112,11 +124,19 @@ function getCurrEventAndCurrSong(){
 	return({"currentEvent":currEvent, "currentSong":currSong});
 }
 
+function updateSongs(retrievedSongs){
+	for(var i =0;i<retrievedSongs.length;i++){
+		songs.songs.push(retrievedSongs[i]);
+	}
+}
+
+//updateSongs(lastFMSongs);
 
 var server = app.listen(8080, function () {
   var host = server.address().address
   var port = server.address().port
-  console.log(lastFMSongs);
   console.log('leezy listening at http://%s:%s', host, port);
-
+  console.log("LOGGING REAL Songs");
+  //console.log(lastFMSongs);
+  //console.log(songs);
 })

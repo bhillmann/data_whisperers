@@ -1,6 +1,7 @@
 /**
  * Created by bhillmann on 21/02/15.
  */
+
 var LastFmNode = require('lastfm').LastFmNode;
 var _ = require('underscore');
 
@@ -28,3 +29,5 @@ function processData(value, key) {
 //getProcessed().once('success', function(data) {
 //    return data;
 //});
+
+exports.getProcessed = getProcessed;
