@@ -93,6 +93,7 @@ app.post('/postEvent', function (req, res, next){
 		}
 	}
 	//then add the event from req to events
+	console.log(req);
 	var jsonEvent = {};
 	events.events.push(jsonEvent);
 
