@@ -165,7 +165,7 @@
         }
     });
 
-    app.controller('GuestController', function($scope){
+    app.controller('GuestController', function($scope, $http){
         $scope.event = curEvent;
         $scope.nowPlaying = {};
 
