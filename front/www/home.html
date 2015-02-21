@@ -1,4 +1,4 @@
-<ion-view view-title="Music Match">
+<ion-view view-title="Music Match" ng-controller="PrefController">
     <ion-content>
         <a href="#/create" class="item">
             Create Event
@@ -9,8 +9,11 @@
         <a href="#/" class="item">
             My Preferences
         </a>
-        <a href="#/" class="item">
+        <a href="#/" class="item" ng-click="test()">
             My Likes
         </a>
+        <div class="item">
+            {{httpData}}
+        </div>
     </ion-content>
 </ion-view>

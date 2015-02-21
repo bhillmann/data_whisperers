@@ -156,8 +156,13 @@
         }
     });
 
-    app.controller('PrefController', function($scope) {
+    app.controller('PrefController', function($scope, $http) {
 
+        $scope.test = function() {
+            $http.get('http://localhost:8080/getUserLikes').success(function(data, status, headers, config) {
+                $scope.httpData = data;
+            });
+        };
     });
 
 })();
