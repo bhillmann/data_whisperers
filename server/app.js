@@ -183,6 +183,7 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     });
 })
 
+//send actual songs
 app.get('/displayCurrentEvent', function (req, res, next){
 	res.send(getCurrEventAndCurrSongAndNextSong());
 })
@@ -215,9 +216,9 @@ app.post('/postEvent', function (req, res, next){
 // })
 
 function getCurrEventAndCurrSongAndNextSong(){
-	var currEvent = "";
-	var currSong = "";
-	var nextSong = "";
+	var currEvent;
+	var currSong;
+	var nextSong;
 	console.log(events.events.length);
 	console.log(events.events);
 	console.log(songs.songs);
@@ -225,23 +226,17 @@ function getCurrEventAndCurrSongAndNextSong(){
 	for(var i=0;i<events.events.length;i++){
 		var current = events.events[i];
 		if(current.isCurrentEvent){
-			currEvent=current.name;
+			currEvent=current;
 		}
 	}
 	//loop through songs to get current song
 	for(var j=0;j<songs.songs.length;j++){
 		var current = songs.songs[j];
 		if(current.isCurrentSong){
-			currSong={
-				title: current.title,
-				artist: current.artist
-			};
+			currSong=current;
 		}
 		if(current.isNextSong){
-			nextSong={
-				title: current.title,
-				artist: current.artist
-			};
+			nextSong=current;
 		}
 	}
 	return({"currentEvent":currEvent, "currentSong":currSong, "nextSong":nextSong});
