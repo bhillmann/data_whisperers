@@ -135,25 +135,19 @@
 
     var curEvent;
 
-    app.controller('curEventController', function($scope){
+    app.controller('BrowseController', function($scope, $state){
+        $http.get('http://localhost:8080/getEvents').success(function(data, status, headers, config) {
+            $scope.eventsData = data;
+        });
 
+        $scope.goEvent = function(event) {
+            curEvent = event;
+            $state.go("viewCurEvent");
+        }
     });
 
-    app.controller('MainController', function($scope, $state) {
-        $scope.createEvent = [{
-            eventName: "filter",
-            name: "name",
-            location: "location",
-            desc: ""
-        }];
-
-
-        $scope.viewCurrentEvent = function(event){
-
-            curEvent = event;
-            $state.go("viewCurEvent")
-
-        }
+    app.controller('GuestController', function($scope){
+        $scope.event = curEvent;
     });
 
     app.controller('PrefController', function($scope, $http) {
