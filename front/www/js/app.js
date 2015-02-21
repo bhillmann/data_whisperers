@@ -46,6 +46,18 @@
         $urlRouterProvider.when('', '/#');
     });
 
+    app.filter('alternate', function () {
+        return function (items, isEven) {
+            var filtered = [];
+            for (var i = 0; i < items.length; i++) {
+                if (isEven ^ (i % 2 != 0)) {
+                    filtered.push(items[i]);
+                }
+            }
+            return filtered;
+        };
+    });
+
     var myEvent = {
         name: "Macathon Kagin",
         location: "1600 Grand Ave",
@@ -96,16 +108,6 @@
 
         $scope.nowPlaying = {};
         $scope.upNext = {};
-        //$scope.nowPlaying = {
-        //    title: "Blank Space",
-        //    artist: "Taylor Swift",
-        //    img: "img/Blank_Space.png"
-        //};
-        //$scope.upNext = {
-        //    title: "Uptown Funk",
-        //    artist: "Mark Ronson",
-        //    img: "img/Uptown_Funk.png"
-        //};
 
         $http.get(url + 'displayCurrentEvent').success(function(data) {
             $scope.nowPlaying = data.currentSong;
@@ -117,21 +119,18 @@
     app.controller('DjController', function($scope, $ionicPopup) {
         $scope.event = myEvent;
         $scope.event.userCount = 0;
-        $scope.nowPlaying = {
-            title: "Blank Space",
-            artist: "Taylor Swift",
-            img: "img/Blank_Space.png"
-        };
-        $scope.upNext = {
-            title: "Uptown Funk",
-            artist: "Mark Ronson",
-            img: "img/Uptown_Funk.png"
-        };
+        $scope.nowPlaying = {};
+        $scope.upNext = {};
+        $scope.pool = [];
 
-        $scope.song = {
-            title: "This is an extremely long Title",
-            artist: "Rae Sremmurd"
-        };
+        $http.get(url + 'displayCurrentEvent').success(function(data) {
+            $scope.nowPlaying = data.currentSong;
+            $scope.upNext = data.nextSong;
+        });
+
+        $http.get(url + 'getPoolOfSongs').success(function(data) {
+            $scope.pool = data.songs;
+        });
 
         $scope.popupSong = function(song) {
             $scope.selectSong = song;
@@ -139,10 +138,14 @@
                 scope: $scope,
                 title: 'Select Song',
                 templateUrl: 'popup-song.html'
-            }).then(function() {
-
+            }).then(function(resp) {
+                if (resp) {
+                    // confirm
+                } else {
+                    // nothing really
+                }
             });
-        }
+        };
     });
 
     var curEvent;
