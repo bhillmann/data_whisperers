@@ -30,7 +30,7 @@ function processData(value, key) {
     var processed = {};
     processed.songName = value.name;
     processed.artist = value.artist.name;
-    processed.dateLiked = "Feb. 21 2015";
+    //processed.dateLiked = "Feb. 21 2015";
     return processed;
 }
 
