@@ -28,11 +28,11 @@ var events = {"events":[
 ]}
 
 var userLikes ={"userLikes":[
-	{"songName":"Psychosocial", "artist":"Slipknot","dateLiked":"Jan. 15 2015"},
-	{"songName":"Kyoto", "artist":"Yung Lean","dateLiked":"Jan. 14 2015"},
-	{"songName":"America", "artist":"Simon & Garfunkel","dateLiked":"Dec. 3 2014"},
-	{"songName":"Old Man", "artist":"Neil Young","dateLiked":"Nov. 15 2014"},
-	{"songName":"The World's Greatest", "artist":"R. Kelly","dateLiked":"Nov. 10 2014"}
+	{"title":"Psychosocial", "artist":"Slipknot","dateLiked":"Jan. 15 2015"},
+	{"title":"Kyoto", "artist":"Yung Lean","dateLiked":"Jan. 14 2015"},
+	{"title":"America", "artist":"Simon & Garfunkel","dateLiked":"Dec. 3 2014"},
+	{"title":"Old Man", "artist":"Neil Young","dateLiked":"Nov. 15 2014"},
+	{"title":"The World's Greatest", "artist":"R. Kelly","dateLiked":"Nov. 10 2014"}
 ]}
 
 var songs ={"songs":[
