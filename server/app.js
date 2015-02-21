@@ -23,8 +23,8 @@ var _ = require("underscore");
 
 //CREATING FAKE DATA
 var events = {"events":[
-    {"name":"Plums", "location":"Plums","filter":["rap","rock"],"description":"Thursday night at Plums!","DJ":true, "isCurrentEvent":true, "startTime":"12:00 am"}, 
-    {"name":"Ben's House", "location":"Grand Ave.","filter":["country","folk","metal"],"description":"A killer time to be sure.","DJ":false, "isCurrentEvent":false, "startTime":"11 pm"} 
+    {"name":"Plums", "location":"Plums","filter":["rap","rock"],"description":"Thursday night at Plums!","DJ":true, "isCurrentEvent":true, "startTime":"12:00 am", "imageURL":"img/plums.jpg"}, 
+    {"name":"Ben's House", "location":"Grand Ave.","filter":["country","folk","metal"],"description":"A killer time to be sure.","DJ":false, "isCurrentEvent":false, "startTime":"11 pm", "imageURL":"img/ben_hilly.jpg"} 
 ]}
 
 var userLikes ={"userLikes":[
