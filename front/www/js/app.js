@@ -79,36 +79,39 @@
         });
 
         $scope.publish = function() {
-            // myEvent = $scope.event;
-
             $http.post(url + 'postEvent', $scope.event).success(function(data) {
-              myEvent = data;
-              if ($scope.event.useDJ) {
+                myEvent = data;
+                if ($scope.event.useDJ) {
                   $state.go('dj');
-              } else {
+                } else {
                   $state.go('event-host');
-              }
+                }
             });
-
         };
 
     });
 
-    // var logData;
-
-    app.controller('HostController', function($scope) {
+    app.controller('HostController', function($scope, $http) {
         $scope.event = myEvent;
-        // $scope.logData = logData;
-        $scope.nowPlaying = {
-            title: "Blank Space",
-            artist: "Taylor Swift",
-            img: "img/Blank_Space.png"
-        };
-        $scope.upNext = {
-            title: "Uptown Funk",
-            artist: "Mark Ronson",
-            img: "img/Uptown_Funk.png"
-        };
+
+        $scope.nowPlaying = {};
+        $scope.upNext = {};
+        //$scope.nowPlaying = {
+        //    title: "Blank Space",
+        //    artist: "Taylor Swift",
+        //    img: "img/Blank_Space.png"
+        //};
+        //$scope.upNext = {
+        //    title: "Uptown Funk",
+        //    artist: "Mark Ronson",
+        //    img: "img/Uptown_Funk.png"
+        //};
+
+        $http.get(url + 'getDisplayCurrentEvent').success(function(data) {
+            $scope.nowPlaying = data.currentSong;
+            $scope.upNext = data.nextSong;
+        });
+
     });
 
     app.controller('DjController', function($scope, $ionicPopup) {
