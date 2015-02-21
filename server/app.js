@@ -15,7 +15,7 @@
  * Created by bhillmann on 21/02/15.
  */
 var lastfm = require("./lastfm.js");
-var _ = require("require");
+var _ = require("underscore");
 
 //below code gets the user's top songs and adds them to the songs array
 
@@ -70,15 +70,19 @@ app.get('/getEvents', function (req, res, next){
 	res.send(events);
 })
 
-app.get('/getUserLikes', function (req, res, next){
+app.get('/x', function (req, res, next){
 	res.send(userLikes);
 })
 
-app.get('/bhillmann'), function(req, res, next) {
-    lastfm.getProcessed().once('success', function(data) {
-        res.send(_map(data, lastfm.processData()));
+app.get('/bhillmann', function(req, res, next) {
+    var ee = lastfm.getProcessed();
+    ee.once('success', function(data) {
+        res.send(_.map(data.toptracks.track, lastfm.processData));
     });
-}
+    ee.once('error', function(data) {
+        console.log(data);
+    });
+})
 
 app.get('/displayCurrentEvent', function (req, res, next){
 	res.send(getCurrEventAndCurrSong);
