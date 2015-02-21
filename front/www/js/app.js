@@ -112,10 +112,21 @@
 
     });
 
-    app.controller('HomeController', function($scope, $http) {
+    app.controller('HomeController', function($scope, $http, $interval) {
         $scope.eventCount = 0;
+
         $http.get(url + 'getEvents').success(function(data) {
             $scope.eventCount = data.events.length;
+        });
+
+        var interval = $interval(function () {
+            $http.get(url + 'getEvents').success(function(data) {
+                $scope.eventCount = data.events.length;
+            });
+        }, 5000);
+
+        $scope.$on('$destroy', function() {
+            interval.cancel();
         });
 
     });
