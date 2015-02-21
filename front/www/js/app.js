@@ -120,7 +120,7 @@
 
     });
 
-    app.controller('DjController', function($scope, $ionicPopup, $http) {
+    app.controller('DjController', function($scope, $ionicPopup, $http, $interval) {
         $scope.event = myEvent;
         $scope.event.userCount = 0;
         $scope.nowPlaying = {};
@@ -136,6 +136,12 @@
             $scope.pool = data.songs;
         });
 
+        var interval = $interval(function () {
+            $http.get(url + 'getPoolOfSongs').success(function(data) {
+                $scope.pool = data.songs;
+            });
+        }, 5000);
+
         $scope.popupSong = function(song) {
             $scope.selectSong = song;
             $ionicPopup.confirm({
@@ -150,6 +156,11 @@
                 }
             });
         };
+
+        $scope.$on('$destroy', function() {
+            interval.cancel();
+        });
+
     });
 
     var curEvent;
