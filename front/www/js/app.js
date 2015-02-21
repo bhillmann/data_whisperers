@@ -79,21 +79,26 @@
         });
 
         $scope.publish = function() {
-            myEvent = $scope.event;
+            // myEvent = $scope.event;
 
-            $http.post(url + 'postEvent', myEvent).success();
-
+            $http.post(url + 'postEvent', $scope.event).success(function(data) {
+              myEvent = data;
             if ($scope.event.useDJ) {
                 $state.go('dj');
             } else {
                 $state.go('event-host');
             }
+            });
+
         };
 
     });
 
+    // var logData;
+
     app.controller('HostController', function($scope) {
         $scope.event = myEvent;
+        // $scope.logData = logData;
         $scope.nowPlaying = {
             title: "Blank Space",
             artist: "Taylor Swift",

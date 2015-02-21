@@ -86,19 +86,24 @@ app.get('/displayCurrentEvent', function (req, res, next){
 //have front end say that it's the current event
 app.post('/postEvent', function (req, res, next){
 	//step 1: update the events object
-	for(var i=0;i<events.events.length;i++){
-		var current = events.events[i];
-		if(current.isCurrentEvent){
-			current.isCurrentEvent=false;
-		}
-	}
-	//then add the event from req to events
+	// for(var i=0;i<events.events.length;i++){
+	// 	var current = events.events[i];
+	// 	if(current.isCurrentEvent){
+	// 		current.isCurrentEvent=false;
+	// 	}
+	// }
+	// //then add the event from req to events
+	// console.log(req);
+	// var jsonEvent = {};
+	// events.events.push(jsonEvent);
+
 	console.log(req);
-	var jsonEvent = {};
-	events.events.push(jsonEvent);
+
+
 
 	//send the req back
-	res.send(req);
+	var newRes = req;
+	res.send(req.body);
 })
 
 app.get('/getPoolOfSongs', function (req, res, next){
