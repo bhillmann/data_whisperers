@@ -1,10 +1,10 @@
-<ion-view view-title="Muzy">
+<ion-view view-title="Muzy" ng-controller="HomeController">
     <ion-content class="background-muzy">
         <div class="list">
             <a href="#/viewEvents" class="item item-icon-left item item-stable">
                 <i class="icon ion-ios7-search-strong"></i>
                 Browse Events
-                <span class="badge badge-assertive">10</span>
+                <span class="badge badge-assertive">{{eventCount}}</span>
             </a>
             <a href="#/create" class="item item-icon-left item item-stable">
                 <i class="icon ion-ios7-paperplane"></i>
