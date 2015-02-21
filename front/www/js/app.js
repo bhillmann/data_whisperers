@@ -15,6 +15,19 @@
     });
   });
 
+  app.config(function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('index', {
+          url: '/',
+          templateUrl: 'home.html'
+        })
+        .state('music', {
+          url: '/music',
+          templateUrl: 'music.html'
+        });
+    $urlRouterProvider.when('', '/#');
+  });
+
   app.controller('MainController', function($scope) {
 
   });
