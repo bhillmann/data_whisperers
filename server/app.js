@@ -28,11 +28,11 @@ var events = {"events":[
 ]}
 
 var userLikes ={"userLikes":[
-	{"songName":"Psychosocial", "artist":"Slipknot","dateLiked":"Jan. 15 2015"},
-	{"songName":"Kyoto", "artist":"Yung Lean","dateLiked":"Jan. 14 2015"},
-	{"songName":"America", "artist":"Simon & Garfunkel","dateLiked":"Dec. 3 2014"},
-	{"songName":"Old Man", "artist":"Neil Young","dateLiked":"Nov. 15 2014"},
-	{"songName":"The World's Greatest", "artist":"R. Kelly","dateLiked":"Nov. 10 2014"}
+	{"title":"Psychosocial", "artist":"Slipknot","dateLiked":"Jan. 15 2015"},
+	{"title":"Kyoto", "artist":"Yung Lean","dateLiked":"Jan. 14 2015"},
+	{"title":"America", "artist":"Simon & Garfunkel","dateLiked":"Dec. 3 2014"},
+	{"title":"Old Man", "artist":"Neil Young","dateLiked":"Nov. 15 2014"},
+	{"title":"The World's Greatest", "artist":"R. Kelly","dateLiked":"Nov. 10 2014"}
 ]}
 
 var songs ={"songs":[
@@ -82,10 +82,12 @@ app.get('/getPoolOfSongs', function(req, res, next) {
     var ee = lastfm.getProcessed();
     ee.once('success', function(data) {
     	var processedPulledSongs = _.map(data.toptracks.track, lastfm.processData);
+    	var currentSongsLength = songs.songs.length;
     	for(var i =0;i<processedPulledSongs.length;i++){
     		processedPulledSongs[i].isCurrentSong=false;
     		processedPulledSongs[i].isNextSong=false;
     		songs.songs.push(processedPulledSongs[i]);
+    		//songs.songs[i+currentSongsLength] = processedPulledSongs[i];
     	}
 
 
