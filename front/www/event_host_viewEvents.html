@@ -4,23 +4,11 @@
             <div class="item item-divider">
                 Upcoming Events
             </div>
-            <!--<div class="item item-thumbnail-left" ng-click="goEvent(event)" ng-repeat="event in events | orderBy:startTime">-->
-                <!--<img src="cover.jpg">-->
-                <!--<h2>{{event.name}}</h2>-->
-                <!--<p>Address: {{event.location}}</p>-->
-                <!--<p>Time: {{event.startTime}}</p>-->
-            <!--</div>-->
-            <div class="item item-thumbnail-left" ng-click="goEvent(events[0])">
-                <img src="img/plums.jpg">
-                <h2>{{events[0].name}}</h2>
-                <p>Address: {{events[0].location}}</p>
-                <p>Time: {{events[0].startTime}}</p>
-            </div>
-            <div class="item item-thumbnail-left" ng-click="goEvent(events[1])">
-                <img src="img/ben_hilly.jpg">
-                <h2>{{events[1].name}}</h2>
-                <p>Address: {{events[1].location}}</p>
-                <p>Time: {{events[1].startTime}}</p>
+            <div class="item item-thumbnail-left" ng-click="goEvent(event)" ng-repeat="event in events | orderBy:startTime">
+                <img src="{{event.imageURL}}" ng-show="event.imageURL">
+                <h2>{{event.name}}</h2>
+                <p>Address: {{event.location}}</p>
+                <p>Time: {{event.startTime}}</p>
             </div>
         </div>
     </ion-content>
