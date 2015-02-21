@@ -196,9 +196,10 @@
         });
     });
     
-    app.controller('PopulateController', function($scope, $http) {
-        
-        
+    app.controller('PopulateController', function($timeout, $state) {
+        $timeout(function() {
+            $state.go('index');
+        }, 3000)
     });
 
 })();
