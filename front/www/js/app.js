@@ -83,11 +83,11 @@
 
             $http.post(url + 'postEvent', $scope.event).success(function(data) {
               myEvent = data;
-            if ($scope.event.useDJ) {
-                $state.go('dj');
-            } else {
-                $state.go('event-host');
-            }
+              if ($scope.event.useDJ) {
+                  $state.go('dj');
+              } else {
+                  $state.go('event-host');
+              }
             });
 
         };
